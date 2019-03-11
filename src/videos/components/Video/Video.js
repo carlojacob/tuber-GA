@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
-import { getVideo } from '../../api'
+import { getVideo, deleteVideo } from '../../api'
 
 import './Video.scss'
 
@@ -18,9 +18,22 @@ class Video extends Component {
     }
   }
 
-  // deleteVideo = id => {
-  //
-  // }
+  delVideo = props => {
+    deleteVideo(props)
+      .then(response => this.setState({
+        shouldRedirect: true,
+        redirectMessage: 'Successfully deleted video',
+        redirectPath: '/videos'
+      }))
+      .catch(error => {
+        this.setState({
+          shouldRedirect: true,
+          redirectMessage: 'Video could not be deleted. Please try again.',
+          redirectPath: `/videos/${this.props.match.params._id}`
+        })
+        console.error(error)
+      })
+  }
 
   componentDidMount () {
     console.log(this.props)
@@ -50,8 +63,8 @@ class Video extends Component {
         <div className="centered-video">
           <iframe className="full-video-dims" src="https://www.youtube.com/embed/tgbNymZ7vqY">
           </iframe>
-          <button onClick={() => this.deleteVideo(this.props.match.params.id)}>Delete</button>
-          <Link to={`/videos/${this.props.match.params.id}/edit`}>
+          <button onClick={() => this.delVideo(this.props)}>Delete</button>
+          <Link to={`/videos/${this.props.match.params._id}/edit`}>
             <button>Edit</button>
           </Link>
         </div>
