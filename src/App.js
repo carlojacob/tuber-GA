@@ -9,7 +9,7 @@ import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
 
-import Videos from './videos/components/Videos'
+import Videos from './videos/components/Videos/Videos'
 
 import Alert from 'react-bootstrap/Alert'
 
