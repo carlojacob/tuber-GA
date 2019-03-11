@@ -57,3 +57,13 @@ export const getVideo = ({ match, user }) => {
     }
   })
 }
+
+export const deleteVideo = ({ match, user }) => {
+  return axios({
+    url: `${apiUrl}/videos/${match.params.id}`,
+    method: 'DELETE',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
