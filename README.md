@@ -16,15 +16,15 @@ The Github repositories for this project are located here:
 
 ### Wireframes
 Initial wireframes images:
-![Homepage](https://i.imgur.com/LQOIgrT.jpg "Wireframe Homepage")
+![Homepage](https://i.imgur.com/LOiXLnJ.jpg "Wireframe Homepage")
 
-![Signed In Page](https://i.imgur.com/GhUvASo.jpg "Wireframe Signed In Page")
+![Signed In Page](https://i.imgur.com/8KW5UoB.jpg "Wireframe Signed In Page")
 
-![View/Show Page](https://i.imgur.com/tUFsVA1.jpg "Wireframe View/Show Page")
+![View/Show Page](https://i.imgur.com/HAlIvMU.jpg "Wireframe View/Show Page")
 
-![Add/Create Page](https://i.imgur.com/EYCkNfk.jpg "Wireframe Add/Create Page")
+![Add/Create Page](https://i.imgur.com/8ETQIAy.jpg "Wireframe Add/Create Page")
 
-![Edit/Update Page](https://i.imgur.com/2g9otMb.jpg "Wireframe Edit/Update Page")
+![Edit/Update Page](https://i.imgur.com/XNktxI1.jpg "Wireframe Edit/Update Page")
 
 ### User Stories
 Tuber user stories:
