@@ -37,8 +37,8 @@ class Videos extends Component {
           <span className="thumbnail-head">Thumbnail</span>
         </p>
         {this.state.videos.map(video => (
-          <p key={video.id}>
-            <Link to={`/videos/${video.id}`} className="videos-table">
+          <p key={video._id}>
+            <Link to={`/videos/${video._id}`} className="videos-table">
               <span className="artist-col">
                 {video.artist}
               </span>

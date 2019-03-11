@@ -47,3 +47,13 @@ export const getVideos = (user) => {
     }
   })
 }
+
+export const getVideo = ({ match, user }) => {
+  return axios({
+    url: `${apiUrl}/videos/${match.params.id}`,
+    method: 'GET',
+    headers: {
+      'Authorization': `Token token=${user.token}`
+    }
+  })
+}
