@@ -11,6 +11,7 @@ import ChangePassword from './auth/components/ChangePassword'
 
 import Videos from './videos/components/Videos/Videos'
 import Video from './videos/components/Video/Video'
+import VideoCreate from './videos/components/VideoCreate/VideoCreate'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -63,6 +64,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/videos/:id' render={({ match }) => (
             <Video alert={this.alert} user={user} match={match} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/video-create' render={() => (
+            <VideoCreate alert={this.alert} user={user} />
           )} />
         </main>
       </React.Fragment>
