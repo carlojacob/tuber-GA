@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
 
 import { getVideos } from '../../api'
+import convertUrl from '../../convertUrl'
 
 import './Videos.scss'
 
@@ -15,8 +16,15 @@ class Videos extends Component {
   }
 
   componentDidMount () {
+    let saveVideos
     getVideos(this.props.user)
-      .then(response => this.setState({ videos: response.data.videos }))
+      .then(response => {
+        saveVideos = response.data.videos
+        saveVideos.forEach(video => {
+          video.url = convertUrl(video.url)
+        })
+        this.setState({ videos: saveVideos })
+      })
       .catch(console.error)
   }
 
@@ -57,8 +65,12 @@ class Videos extends Component {
                 {video.description}
               </span>
               <span className="thumbnail-col">
-                <iframe className="thumbnail-dims" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                </iframe>
+                {!video.url
+                  ? <iframe className="thumbnail-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ">
+                  </iframe>
+                  : <iframe className="thumbnail-dims" src={video.url}>
+                  </iframe>
+                }
               </span>
             </Link>
           </p>
