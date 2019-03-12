@@ -75,10 +75,12 @@ class Video extends Component {
             : <iframe className="full-video-dims" src={url}>
             </iframe>
           }
-          <button onClick={() => this.delVideo(this.props)}>Delete</button>
-          <Link to={`/videos/${this.props.match.params.id}/edit`}>
-            <button>Edit</button>
-          </Link>
+          <div>
+            <button onClick={() => this.delVideo(this.props)}>Delete</button>
+            <Link to={`/videos/${this.props.match.params.id}/edit`}>
+              <button>Edit</button>
+            </Link>
+          </div>
         </div>
         <div>
           <p className="video-show video-head">Artist:</p>
