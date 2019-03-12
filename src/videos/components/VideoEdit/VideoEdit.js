@@ -61,7 +61,7 @@ class VideoEdit extends Component {
       .catch(error => {
         this.setState({
           shouldRedirect: true,
-          redirectMessage: 'Video not Fount',
+          redirectMessage: 'Video not Found',
           redirectPath: '/videos'
         })
         console.error(error)

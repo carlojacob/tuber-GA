@@ -3,6 +3,7 @@ import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
 
 import { getVideo, deleteVideo } from '../../api'
+import convertUrl from '../../convertUrl'
 
 import './Video.scss'
 
@@ -38,6 +39,11 @@ class Video extends Component {
   componentDidMount () {
     getVideo(this.props)
       .then(response => this.setState({ video: response.data.video }))
+      .then(() => this.setState({ video: {
+        ...this.state.video,
+        url: convertUrl(this.state.video.url)
+      }
+      }))
       .catch(console.error)
   }
 
@@ -55,13 +61,20 @@ class Video extends Component {
       return <p>Loading...</p>
     }
 
-    const { artist, title, album, description } = video
+    const { artist, title, album, description, url } = video
 
     return (
       <Fragment>
         <div className="centered-video">
-          <iframe className="full-video-dims" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-          </iframe>
+          {!url
+            ? <div>
+              <iframe className="full-video-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
+              </iframe>
+              <p>Cannot load video, but you just got Rick-rolled</p>
+            </div>
+            : <iframe className="full-video-dims" src={url}>
+            </iframe>
+          }
           <button onClick={() => this.delVideo(this.props)}>Delete</button>
           <Link to={`/videos/${this.props.match.params.id}/edit`}>
             <button>Edit</button>
