@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 
 import { createVideo } from '../../api'
@@ -60,6 +61,9 @@ class VideoCreate extends Component {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
+        <Link to='/videos'>
+          <button>Back</button>
+        </Link>
       </Fragment>
     )
   }

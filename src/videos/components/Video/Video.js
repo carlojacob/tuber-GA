@@ -80,6 +80,9 @@ class Video extends Component {
             <Link to={`/videos/${this.props.match.params.id}/edit`}>
               <button>Edit</button>
             </Link>
+            <Link to='/videos'>
+              <button>Back</button>
+            </Link>
           </div>
         </div>
         <div>

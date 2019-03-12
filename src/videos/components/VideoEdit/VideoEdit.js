@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
+import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 
 import { getVideo, updateVideo } from '../../api'
@@ -95,6 +96,9 @@ class VideoEdit extends Component {
           handleChange={handleChange}
           handleSubmit={handleSubmit}
         />
+        <Link to={`/videos/${this.props.match.params.id}`}>
+          <button>Back</button>
+        </Link>
       </Fragment>
     )
   }
