@@ -29,14 +29,13 @@ class Video extends Component {
         this.setState({
           shouldRedirect: true,
           redirectMessage: 'Video could not be deleted. Please try again.',
-          redirectPath: `/videos/${this.props.match.params._id}`
+          redirectPath: `/videos/${this.props.match.params.id}`
         })
         console.error(error)
       })
   }
 
   componentDidMount () {
-    console.log(this.props)
     getVideo(this.props)
       .then(response => this.setState({ video: response.data.video }))
       .catch(console.error)
@@ -64,7 +63,7 @@ class Video extends Component {
           <iframe className="full-video-dims" src="https://www.youtube.com/embed/tgbNymZ7vqY">
           </iframe>
           <button onClick={() => this.delVideo(this.props)}>Delete</button>
-          <Link to={`/videos/${this.props.match.params._id}/edit`}>
+          <Link to={`/videos/${this.props.match.params.id}/edit`}>
             <button>Edit</button>
           </Link>
         </div>

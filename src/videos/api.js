@@ -49,3 +49,22 @@ export const createVideo = (user, videoData) => {
     }
   })
 }
+
+export const updateVideo = (props, videoData) => {
+  return axios({
+    url: `${apiUrl}/videos/${props.match.params.id}`,
+    method: 'PATCH',
+    headers: {
+      'Authorization': `Token token=${props.user.token}`
+    },
+    data: {
+      video: {
+        artist: videoData.artist,
+        title: videoData.title,
+        album: videoData.album,
+        description: videoData.description,
+        url: videoData.url
+      }
+    }
+  })
+}
