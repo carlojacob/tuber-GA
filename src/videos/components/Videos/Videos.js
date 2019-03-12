@@ -27,7 +27,12 @@ class Videos extends Component {
     return (
       <Fragment>
         <h3>
-          Your Tubes <span><button>Add Tube</button></span>
+          Your Tubes
+          <span>
+            <Link to='/video-create'>
+              <button>Add Tube</button>
+            </Link>
+          </span>
         </h3>
         <p className="videos-table table-head">
           <span className="artist-head">Artist</span>
