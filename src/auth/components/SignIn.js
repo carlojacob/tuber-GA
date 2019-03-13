@@ -10,6 +10,7 @@ class SignIn extends Component {
 
     this.state = {
       email: '',
+      username: '',
       password: ''
     }
   }
@@ -29,24 +30,32 @@ class SignIn extends Component {
       .then(() => history.push('/videos'))
       .catch(error => {
         console.error(error)
-        this.setState({ email: '', password: '' })
+        this.setState({ email: '', username: '', password: '' })
         alert(messages.signInFailure, 'danger')
       })
   }
 
+  componentDidUpdate () {
+    if (this.state.username.includes('@') && this.state.username !== this.state.email) {
+      this.setState({ email: this.state.username })
+    }
+    if (!this.state.username.includes('@') && this.state.email) {
+      this.setState({ email: '' })
+    }
+  }
+
   render () {
-    const { email, password } = this.state
+    const { username, password } = this.state
 
     return (
       <form className='auth-form' onSubmit={this.onSignIn}>
         <h3>Sign In</h3>
-        <label htmlFor="email">Email</label>
+        <label htmlFor="username">Email or Username</label>
         <input
           required
-          type="email"
-          name="email"
-          value={email}
-          placeholder="Email"
+          name="username"
+          value={username}
+          placeholder="Email or Username"
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
