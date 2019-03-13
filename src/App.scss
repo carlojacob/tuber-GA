@@ -3,6 +3,11 @@ $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
 
+.fade-out {
+  opacity: 0;
+  transition: opacity .75s linear;
+}
+
 .flash-success,
 .flash-warning,
 .flash-error {

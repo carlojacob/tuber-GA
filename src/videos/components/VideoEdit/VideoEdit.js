@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
-import { Alert } from 'react-bootstrap'
 
 import { getVideo, updateVideo } from '../../api'
 import messages from '../../messages'
@@ -14,7 +13,6 @@ class VideoEdit extends Component {
 
     this.state = {
       video: null,
-      message: null,
       shouldRedirect: false,
       redirectPath: '',
       editedVideo: false
@@ -30,6 +28,7 @@ class VideoEdit extends Component {
     event.preventDefault()
 
     const { artist, title, album, description, url } = this.state.video
+
     const { alert } = this.props
 
     if ((artist.length === 0 &&
@@ -37,7 +36,7 @@ class VideoEdit extends Component {
     album.length === 0 &&
     description.length === 0) ||
     url.length === 0) {
-      return this.setState({ message: 'You must enter a URL and at least one other field.' })
+      return alert(messages.createEditVideoInvalid, 'danger')
     }
 
     updateVideo(this.props, this.state.video)
@@ -46,7 +45,6 @@ class VideoEdit extends Component {
         shouldRedirect: true,
         redirectPath: `/videos/${this.props.match.params.id}`
       }))
-      .then(() => alert(messages.updateVideoSuccess, 'success'))
       .catch(error => console.error(error))
   }
 
@@ -73,7 +71,7 @@ class VideoEdit extends Component {
 
   render () {
     const { handleChange, handleSubmit } = this
-    const { video, message, shouldRedirect, redirectPath, editedVideo } = this.state
+    const { video, shouldRedirect, redirectPath, editedVideo } = this.state
 
     if (shouldRedirect) {
       return <Redirect to={{
@@ -91,7 +89,6 @@ class VideoEdit extends Component {
 
     return (
       <Fragment>
-        {message && <Alert dismissible variant="danger">{message}</Alert>}
         <VideoForm
           video={video}
           handleChange={handleChange}
