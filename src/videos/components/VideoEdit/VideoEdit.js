@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { Alert } from 'react-bootstrap'
 
 import { getVideo, updateVideo } from '../../api'
+import messages from '../../messages'
 
 import VideoForm from '../VideoForm/VideoForm'
 
@@ -15,7 +16,6 @@ class VideoEdit extends Component {
       video: null,
       message: null,
       shouldRedirect: false,
-      redirectMessage: '',
       redirectPath: '',
       editedVideo: false
     }
@@ -30,6 +30,7 @@ class VideoEdit extends Component {
     event.preventDefault()
 
     const { artist, title, album, description, url } = this.state.video
+    const { alert } = this.props
 
     if ((artist.length === 0 &&
     title.length === 0 &&
@@ -45,6 +46,7 @@ class VideoEdit extends Component {
         shouldRedirect: true,
         redirectPath: `/videos/${this.props.match.params.id}`
       }))
+      .then(() => alert(messages.updateVideoSuccess, 'success'))
       .catch(error => console.error(error))
   }
 
@@ -62,21 +64,20 @@ class VideoEdit extends Component {
       .catch(error => {
         this.setState({
           shouldRedirect: true,
-          redirectMessage: 'Video not Found',
           redirectPath: '/videos'
         })
+        alert(messages.getVideoFailure, 'danger')
         console.error(error)
       })
   }
 
   render () {
     const { handleChange, handleSubmit } = this
-    const { video, message, shouldRedirect, redirectPath, redirectMessage, editedVideo } = this.state
+    const { video, message, shouldRedirect, redirectPath, editedVideo } = this.state
 
     if (shouldRedirect) {
       return <Redirect to={{
-        pathname: redirectPath,
-        state: { message: redirectMessage }
+        pathname: redirectPath
       }} />
     }
 

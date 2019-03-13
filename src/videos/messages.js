@@ -1,4 +1,6 @@
 export default {
-  videoIndexSuccess: 'Enjoy your Tubing.',
-  videoIndexFailure: 'Could not load videos, or you have no videos.'
+  deleteVideoSuccess: 'Successfully deleted video.',
+  deleteVideoFailure: 'Could not delete video. Please try again.',
+  getVideoFailure: 'Could not find video. Please try again.',
+  updateVideoSuccess: 'Video successfully updated.'
 }
