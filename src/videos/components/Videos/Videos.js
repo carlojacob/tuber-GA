@@ -47,7 +47,7 @@ class Videos extends Component {
           </span>
         </h3>
         {videos.length === 0
-          ? <Alert dismissible variant="primary">{'You haven\'t added any videos yet!'}</Alert>
+          ? <Alert variant="primary">{'You haven\'t added any videos yet!'}</Alert>
           : <p className="videos-table table-head">
             <span className="artist-head">Artist</span>
             <span className="title-head">Title</span>
