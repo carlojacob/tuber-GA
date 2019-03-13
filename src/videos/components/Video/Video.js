@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 
 import { getVideo, deleteVideo } from '../../api'
 import convertUrl from '../../convertUrl'
+import messages from '../../messages'
 
 import './Video.scss'
 
@@ -14,24 +16,25 @@ class Video extends Component {
     this.state = {
       video: null,
       shouldRedirect: false,
-      redirectMessage: '',
       redirectPath: ''
     }
   }
 
   delVideo = props => {
+    const { alert } = this.props
+
     deleteVideo(props)
       .then(response => this.setState({
         shouldRedirect: true,
-        redirectMessage: 'Successfully deleted video',
         redirectPath: '/videos'
       }))
+      .then(() => alert(messages.deleteVideoSuccess, 'success'))
       .catch(error => {
         this.setState({
           shouldRedirect: true,
-          redirectMessage: 'Video could not be deleted. Please try again.',
           redirectPath: `/videos/${this.props.match.params.id}`
         })
+        alert(messages.deleteVideoFailure, 'danger')
         console.error(error)
       })
   }
@@ -48,12 +51,11 @@ class Video extends Component {
   }
 
   render () {
-    const { video, shouldRedirect, redirectPath, redirectMessage } = this.state
+    const { video, shouldRedirect, redirectPath } = this.state
 
     if (shouldRedirect) {
       return <Redirect to={{
-        pathname: redirectPath,
-        state: { message: redirectMessage }
+        pathname: redirectPath
       }} />
     }
 
@@ -68,9 +70,9 @@ class Video extends Component {
         <div className="centered-video">
           {!url
             ? <div>
+              <Alert dismissible variant="danger">Cannot load the video you expect, due to an invalid URL, but you just got Rick-rolled!</Alert>
               <iframe className="full-video-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
               </iframe>
-              <p>Cannot load video, but you just got Rick-rolled</p>
             </div>
             : <iframe className="full-video-dims" src={url}>
             </iframe>

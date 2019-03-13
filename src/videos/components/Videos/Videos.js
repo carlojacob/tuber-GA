@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
+import { Alert } from 'react-bootstrap'
 
 import { getVideos } from '../../api'
 import convertUrl from '../../convertUrl'
@@ -29,9 +30,12 @@ class Videos extends Component {
   }
 
   render () {
-    if (!this.state.videos) {
+    const { videos } = this.state
+
+    if (videos === null) {
       return <p>Loading...</p>
     }
+
     return (
       <Fragment>
         <h3>
@@ -42,14 +46,17 @@ class Videos extends Component {
             </Link>
           </span>
         </h3>
-        <p className="videos-table table-head">
-          <span className="artist-head">Artist</span>
-          <span className="title-head">Title</span>
-          <span className="album-head">Album</span>
-          <span className="description-head">Description</span>
-          <span className="thumbnail-head">Thumbnail</span>
-        </p>
-        {this.state.videos.map(video => (
+        {videos.length === 0
+          ? <Alert dismissible variant="primary">{'You haven\'t added any videos yet!'}</Alert>
+          : <p className="videos-table table-head">
+            <span className="artist-head">Artist</span>
+            <span className="title-head">Title</span>
+            <span className="album-head">Album</span>
+            <span className="description-head">Description</span>
+            <span className="thumbnail-head">Thumbnail</span>
+          </p>
+        }
+        {videos.map(video => (
           <p key={video._id}>
             <Link to={`/videos/${video._id}`} className="videos-table">
               <span className="artist-col">
