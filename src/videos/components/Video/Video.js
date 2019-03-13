@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
-import { Alert } from 'react-bootstrap'
 
 import { getVideo, deleteVideo } from '../../api'
 import convertUrl from '../../convertUrl'
@@ -40,6 +39,8 @@ class Video extends Component {
   }
 
   componentDidMount () {
+    const { alert } = this.props
+
     getVideo(this.props)
       .then(response => this.setState({ video: response.data.video }))
       .then(() => this.setState({ video: {
@@ -47,6 +48,11 @@ class Video extends Component {
         url: convertUrl(this.state.video.url)
       }
       }))
+      .then(() => {
+        if (this.state.video.url === false) {
+          alert(messages.rickError, 'danger')
+        }
+      })
       .catch(console.error)
   }
 
@@ -69,11 +75,8 @@ class Video extends Component {
       <Fragment>
         <div className="centered-video">
           {!url
-            ? <div>
-              <Alert dismissible variant="danger">Cannot load the video you expect, due to an invalid URL, but you just got Rick-rolled!</Alert>
-              <iframe className="full-video-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
-              </iframe>
-            </div>
+            ? <iframe className="full-video-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1">
+            </iframe>
             : <iframe className="full-video-dims" src={url}>
             </iframe>
           }
@@ -102,6 +105,15 @@ class Video extends Component {
         <div>
           <p className="video-show video-head">Description:</p>
           <p className="video-show video-text">{description}</p>
+        </div>
+        <div>
+          <p className="video-show video-head">URL:</p>
+          <p className="video-show video-text">
+            {!url
+              ? 'Invalid URL stored'
+              : <a rel="noopener noreferrer" target="_blank" href={url.replace('embed/', 'watch?v=')}>{url.replace('embed/', 'watch?v=')}</a>
+            }
+          </p>
         </div>
       </Fragment>
     )

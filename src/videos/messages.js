@@ -2,5 +2,6 @@ export default {
   deleteVideoSuccess: 'Successfully deleted video.',
   deleteVideoFailure: 'Could not delete video. Please try again.',
   getVideoFailure: 'Could not find video. Please try again.',
-  updateVideoSuccess: 'Video successfully updated.'
+  createEditVideoInvalid: 'You must enter a URL and at least one other field.',
+  rickError: 'Cannot load the video due to an invalid URL, but... you got Rick-rolled!'
 }
