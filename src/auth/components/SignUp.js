@@ -10,6 +10,7 @@ class SignUp extends Component {
 
     this.state = {
       email: '',
+      username: '',
       password: '',
       passwordConfirmation: ''
     }
@@ -24,20 +25,24 @@ class SignUp extends Component {
 
     const { alert, history, setUser } = this.props
 
+    if (this.state.username.includes('@')) {
+      return alert(messages.usernameInvalid, 'danger')
+    }
+
     signUp(this.state)
       .then(() => signIn(this.state))
       .then(res => setUser(res.data.user))
       .then(() => alert(messages.signUpSuccess, 'success'))
-      .then(() => history.push('/'))
+      .then(() => history.push('/videos'))
       .catch(error => {
         console.error(error)
-        this.setState({ email: '', password: '', passwordConfirmation: '' })
+        this.setState({ email: '', username: '', password: '', passwordConfirmation: '' })
         alert(messages.signUpFailure, 'danger')
       })
   }
 
   render () {
-    const { email, password, passwordConfirmation } = this.state
+    const { email, username, password, passwordConfirmation } = this.state
 
     return (
       <form className='auth-form' onSubmit={this.onSignUp}>
@@ -50,6 +55,14 @@ class SignUp extends Component {
           value={email}
           type="email"
           placeholder="Email"
+          onChange={this.handleChange}
+        />
+        <label htmlFor="username">Username</label>
+        <input
+          required
+          name="username"
+          value={username}
+          placeholder="Username (may not contain '@' symbol)"
           onChange={this.handleChange}
         />
         <label htmlFor="password">Password</label>
