@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import './App.scss'
 import { Route } from 'react-router-dom'
 
@@ -8,6 +8,11 @@ import SignUp from './auth/components/SignUp'
 import SignIn from './auth/components/SignIn'
 import SignOut from './auth/components/SignOut'
 import ChangePassword from './auth/components/ChangePassword'
+
+import Videos from './videos/components/Videos/Videos'
+import Video from './videos/components/Video/Video'
+import VideoCreate from './videos/components/VideoCreate/VideoCreate'
+import VideoEdit from './videos/components/VideoEdit/VideoEdit'
 
 import Alert from 'react-bootstrap/Alert'
 
@@ -33,7 +38,7 @@ class App extends Component {
     const { alerts, user } = this.state
 
     return (
-      <React.Fragment>
+      <Fragment>
         <Header user={user} />
         {alerts.map((alert, index) => (
           <Alert key={index} dismissible variant={alert.type}>
@@ -55,8 +60,20 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword alert={this.alert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/videos' render={() => (
+            <Videos alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/videos/:id' render={({ match }) => (
+            <Video alert={this.alert} user={user} match={match} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/video-create' render={() => (
+            <VideoCreate alert={this.alert} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/videos/:id/edit' render={({ match }) => (
+            <VideoEdit alert={this.alert} user={user} match={match} />
+          )} />
         </main>
-      </React.Fragment>
+      </Fragment>
     )
   }
 }
