@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router'
 import { Link } from 'react-router-dom'
-import { Alert } from 'react-bootstrap'
 
 import { createVideo } from '../../api'
+import messages from '../../messages'
 
 import VideoForm from '../VideoForm/VideoForm'
 
@@ -31,12 +31,14 @@ class VideoCreate extends Component {
 
     const { artist, title, album, description, url } = this.state
 
+    const { alert } = this.props
+
     if ((artist.length === 0 &&
     title.length === 0 &&
     album.length === 0 &&
     description.length === 0) ||
     url.length === 0) {
-      return this.setState({ message: 'You must enter a URL and at least one other field.' })
+      return alert(messages.createEditVideoInvalid, 'danger')
     }
 
     createVideo(this.props.user, this.state)
@@ -45,7 +47,7 @@ class VideoCreate extends Component {
   }
 
   render () {
-    const { artist, title, album, description, url, message, createdVideoId } = this.state
+    const { artist, title, album, description, url, createdVideoId } = this.state
 
     if (createdVideoId) {
       return <Redirect to={`/videos/${createdVideoId}`} />
@@ -55,7 +57,6 @@ class VideoCreate extends Component {
 
     return (
       <Fragment>
-        {message && <Alert dismissible variant="danger">{message}</Alert>}
         <VideoForm
           video={{ artist, title, album, description, url }}
           handleChange={handleChange}

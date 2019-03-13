@@ -31,7 +31,19 @@ class App extends Component {
   clearUser = () => this.setState({ user: null })
 
   alert = (message, type) => {
-    this.setState({ alerts: [...this.state.alerts, { message, type }] })
+    this.setState({ alerts: [...this.state.alerts, { message, type, fade: false }] })
+    setTimeout(() => {
+      this.setState(prevState => ({
+        alerts: prevState.alerts.map(alert => ({
+          message: alert.message,
+          type: alert.type,
+          fade: true
+        }))
+      }))
+    }, 1000)
+    setTimeout(() => {
+      this.setState(prevState => ({ alerts: prevState.alerts.slice(1) }))
+    }, 2000)
   }
 
   render () {
@@ -41,7 +53,7 @@ class App extends Component {
       <Fragment>
         <Header user={user} />
         {alerts.map((alert, index) => (
-          <Alert key={index} dismissible variant={alert.type}>
+          <Alert className={alert.fade ? 'fade-out' : ''}key={index} dismissible variant={alert.type}>
             <Alert.Heading>
               {alert.message}
             </Alert.Heading>
