@@ -2,7 +2,7 @@ import React from 'react'
 
 import './HomeLogo.scss'
 
-const tuberLargeLogo = require('./tuberLargeLogo')
+const tuberLargeLogo = require('./tuberLargeLogo.png')
 
 const HomeLogo = () => (
   <div className="home-logo-div">
