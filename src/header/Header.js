@@ -26,7 +26,9 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Tuber</h1>
+    <div>
+      <img className="header-logo" src="https://i.imgur.com/flpJBQw.png" title="tuberSmallLogo" />
+    </div>
     <nav>
       { user && <span>Welcome, {user.username}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
