@@ -1,7 +1,24 @@
+$body-background: #eee9e9;
 $success: #c7f282;
 $warning: #f1e681;
 $error: #f08181;
 $charcoal: #ccc;
+$youtube-red: #f00;
+$youtube-red-hover: #b00;
+
+a {
+  color: $youtube-red;
+
+  &:hover {
+    color: $youtube-red-hover;
+    text-decoration: none;
+  }
+}
+
+body {
+  background-color: $body-background;
+  font-family: Roboto, Arial, sans-serif;
+}
 
 .fade-out {
   opacity: 0;
