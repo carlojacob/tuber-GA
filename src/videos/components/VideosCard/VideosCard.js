@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom'
 import { Card, ListGroup, ListGroupItem, Col } from 'react-bootstrap'
 
 import './VideosCard.scss'
-/* TODO: 'https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg' */
 
 const convertUrlToThumb = url => {
   return `https://img.youtube.com/vi/${url.split('embed/')[1]}/maxresdefault.jpg`
 }
 
 const VideosCard = ({ video }) => (
-  <Col xs="12" sm="6" md="4" lg="3">
+  <Col className="video-col">
     <Link to={`/videos/${video._id}`} className="video-link">
       <Card className="video-wrapper">
         <Card.Img className="video-img" variant="top" src={!video.url
