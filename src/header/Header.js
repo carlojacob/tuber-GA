@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import './Header.scss'
 
+const tuberSmallLogo = require('./tuberSmallLogo.png')
+
 const authenticatedOptions = (
   <React.Fragment>
     <Link to="/videos">Videos</Link>
@@ -26,7 +28,9 @@ const alwaysOptions = (
 
 const Header = ({ user }) => (
   <header className="main-header">
-    <h1>Tuber</h1>
+    <div>
+      <img className="header-logo" src={tuberSmallLogo} title="tuberSmallLogo" />
+    </div>
     <nav>
       { user && <span>Welcome, {user.username}</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }

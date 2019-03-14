@@ -1,6 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { Alert } from 'react-bootstrap'
+import { Alert, Container, Row } from 'react-bootstrap'
+
+import VideosCard from '../VideosCard/VideosCard'
 
 import { getVideos } from '../../api'
 import convertUrl from '../../convertUrl'
@@ -48,40 +50,18 @@ class Videos extends Component {
         </h3>
         {videos.length === 0
           ? <Alert variant="primary">{'You haven\'t added any videos yet!'}</Alert>
-          : <p className="videos-table table-head">
-            <span className="artist-head">Artist</span>
-            <span className="title-head">Title</span>
-            <span className="album-head">Album</span>
-            <span className="description-head">Description</span>
-            <span className="thumbnail-head">Thumbnail</span>
-          </p>
+          : ''
         }
-        {videos.map(video => (
-          <p key={video._id}>
-            <Link to={`/videos/${video._id}`} className="videos-table">
-              <span className="artist-col">
-                {video.artist}
-              </span>
-              <span className="title-col">
-                {video.title}
-              </span>
-              <span className="album-col">
-                {video.album}
-              </span>
-              <span className="description-col">
-                {video.description}
-              </span>
-              <span className="thumbnail-col">
-                {!video.url
-                  ? <iframe className="thumbnail-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                  </iframe>
-                  : <iframe className="thumbnail-dims" src={video.url}>
-                  </iframe>
-                }
-              </span>
-            </Link>
-          </p>
-        ))}
+        <Container>
+          <Row>
+            {videos.map(video => (
+              <VideosCard
+                key={video._id}
+                video={video}
+              />
+            ))}
+          </Row>
+        </Container>
       </Fragment>
     )
   }
