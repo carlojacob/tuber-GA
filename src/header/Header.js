@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 import './Header.scss'
 
-const tuberSmallLogo = require('./tuberSmallLogo')
+const tuberSmallLogo = require('./tuberSmallLogo.png')
 
 const authenticatedOptions = (
   <React.Fragment>
