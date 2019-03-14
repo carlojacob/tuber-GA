@@ -16,6 +16,10 @@ class Videos extends Component {
     }
   }
 
+  convertUrlToThumb = url => {
+    return `https://img.youtube.com/vi/${url.split('embed/')[1]}/maxresdefault.jpg`
+  }
+
   componentDidMount () {
     let saveVideos
     getVideos(this.props.user)
@@ -31,6 +35,8 @@ class Videos extends Component {
 
   render () {
     const { videos } = this.state
+
+    const { convertUrlToThumb } = this
 
     if (videos === null) {
       return <p>Loading...</p>
@@ -73,10 +79,8 @@ class Videos extends Component {
               </span>
               <span className="thumbnail-col">
                 {!video.url
-                  ? <iframe className="thumbnail-dims" src="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                  </iframe>
-                  : <iframe className="thumbnail-dims" src={video.url}>
-                  </iframe>
+                  ? <img className="thumbnail-dims" src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" />
+                  : <img className="thumbnail-dims" src={convertUrlToThumb(video.url)} />
                 }
               </span>
             </Link>
