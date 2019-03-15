@@ -6,12 +6,14 @@ This is the developer documentation for the Tuber application, which allows user
 The Github repositories for this project are located here:
 
 [Application Client](https://github.com/carlojacob/tuber)
+
 [Application API](https://github.com/carlojacob/tuber-api)
 
 ### Deployed Sites
 The deployed sites for this project are located here:
 
 [Tuber Client](https://carlojacob.github.io/tuber)
+
 [Tuber API](https://tuber-ccjwdi.herokuapp.com/)
 
 ### What is Tuber
