@@ -1,5 +1,6 @@
 $card-background-color: #fffafa;
 $card-border-color: #333;
+$img-border-color: $card-border-color;
 $card-width: 90%;
 $card-height: $card-width * (5 / 9);
 
@@ -39,11 +40,12 @@ $card-height: $card-width * (5 / 9);
 }
 
 .video-img {
+  border: 1px solid $card-border-color;
   height: 120px;
-  margin: 5% auto;
+  margin: 10px;
   object-fit: cover;
-  padding: 0 10px;
-  width: 240px;
+  padding: 0;
+  width: 220px;
 }
 
 .video-title {
