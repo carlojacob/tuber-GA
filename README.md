@@ -1,6 +1,6 @@
 # Tuber
 
-This is the developer documentation for an application that allows users to save their favorite YouTube videos with additional customized information. The developer used the Atom text-editing platform, along with git and other software to write and test the code. The developer wrote the client facing code using HTML, SCSS (CSS), React and JavaScript (the API was written using Express.js).
+This is the developer documentation for the Tuber application, which allows users to save their favorite YouTube videos with additional useful information. The developer used the Atom text-editing platform, along with git and other software to write and test the code. The developer wrote the client facing code using HTML, SCSS (CSS), React and JavaScript (the API was written using Express.js).
 
 ### Github Repository Links
 The Github repositories for this project are located here:
@@ -12,7 +12,13 @@ The Github repositories for this project are located here:
 [Tuber API](https://tuber-ccjwdi.herokuapp.com/)
 
 ### What is Tuber
-<!-- Bike Ridr is an application that can be used by cyclists to log date, location, distance and time data from their bike rides; then review, edit or delete previous ride data. The user creates a unique, password-protected account; then the user enters new ride data on a form that is provided and/or views all of their existing rides, if any exist. -->
+**Noun: Avid YouTube user** | *NOT a potato*
+Tuber was developed with the avid *tuber* as the first priority. A *tuber* can use this application to save information about his/her favorite YouTube videos, all in one easy-to-access and easily manipulated website.
+
+*Tubers* can custom save the artist's name, title, album, a description and the URL for their favorite video. Any correctly entered "YouTube format" URL allows that video to played directly on the application, and incorrectly entered URLs lead to a pleasant surprise.
+
+### Screenshot
+![Tuber Screenshot](https://i.imgur.com/exjZfTi.png)
 
 ### Wireframes
 Initial wireframes images:
@@ -50,44 +56,54 @@ Tuber user stories:
 ![Resource Tables](https://i.imgur.com/Ytmx9vV.jpg "Resource Tables")
 
 ### Technologies Used
-<!-- The following technologies were used to create this project:
-1. HTML.
+The following technologies were used to develop this application:
+1. HTML5.
 2. SCSS.
-3. JavaScript.
-4. JQuery.
-5. Node.js.
-6. Ruby on Rails.
-7. Pry.
-8. PostgreSQL.
+3. Bootstrap.
+4. JavaScript.
+5. Express.js
+6. Node.js
+7. MongoDB
+8. Mongoose
 9. Atom.
 10. Git.
 11. Github.
 12. Heroku.
-13. Grunt.
+13. npm.
 14. Curl.
 15. AJAX.
-16. Bootstrap. -->
 
 ### Development Process and Problem-Solving
-<!-- This project started by developing an initial project scope, which was modified as necessary during development:
+Development for this application started by building an initial project scope, which was modified as necessary during development:
 1. Developed application idea, and determined diagrammed ERDs for successful creation.
 2. Scaffolded database tables for API.
 3. Developed wireframes for desired user interface.
 4. Made considerations for how various in-app screens would be displayed.
 5. Placed heavy emphasis on meeting minimum viable product first. Initially applied minimal SCSS to ensure that the user experience met requirements, and additional styling was added near completion as time permitted.
-6. Placed heavy emphasis on performing new tasks in new branches and making regular commits. Branch names explain what changes were made on that branch, and often include just one commit. -->
+6. Placed heavy emphasis on performing new tasks in new branches and making regular commits. Branch names explain what changes were made on that branch, and often include just one commit.
+
+### Set up and installation instructions for application
+
+Users who wish to download and improve upon this application may fork and clone from the public Github client repository [here](https://github.com/carlojacob/tuber) and the public API repository [here](https://github.com/carlojacob/tuber-api).
+
+After forking and cloning the client repository, continue personalizing your set up by following the **Installation** steps provided [here](https://git.generalassemb.ly/ga-wdi-boston/react-auth-template), beginning at `6. Replace the "homepage" field in package.json with your (public) Github account name and repository name.`.
+
+After forking and cloning the API repository, continue personalizing your set up by following the **Installation** steps provided [here](https://git.generalassemb.ly/ga-wdi-boston/express-api-template#installation), beginning at `7. Install dependencies with npm install.`.
+
+Alternatively, you may choose to initialize your own repository by starting at step `1.` of either list of **Installation** steps.
 
 ### Improvements/Unsolved Problems
-<!-- The following improvements could be made:
+The following improvements could be made:
 1. Improvements to interface for more user-friendly experience.
-2. Create user profiles to enhance/personalize each user's experience, and to enable interaction between user accounts (eg. view another user's rides).
-3. Ride history table data sorted by date.
-4. Output average speed of rider during activity.
-5. Modals for user inputs.
-6. Logo and animations for buttons.
-7. Help documentation.
-8. Provide additional pseudocode for understanding what is being done.
-9. Refactor code for improved readability.
-10. Inputs for additional ride data (eg. cycling cadence).
-11. Input ride data in tabular format.
-12. Resolve formatting issues on various screen setups. -->
+2. Modals for user inputs.
+3. Button, input, other UI improvements on show, create and edit pages.
+4. Video categories/custom fields.
+5. Responsive design.
+6. Help documentation.
+7. Create user profiles to enhance/personalize each user's experience, and to enable interaction between user accounts (eg. view another user's favorite videos and add to their own favorites).
+8. Sorting saved videos by field.
+9. User settings for "autoplay" and "loop".
+10. Search bar to find by any saved info.
+11. Personal video rating scale (1-10).
+12. Provide additional pseudocode for understanding what is being done.
+13. Integrate YouTube API for additional functionality.
