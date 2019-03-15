@@ -1,15 +1,25 @@
 $card-background-color: #fffafa;
 $card-border-color: #333;
+$card-width: 90%;
+$card-height: $card-width * (5 / 9);
 
-.video-artist-dims,
+.video-artist-dims {
+  height: 34px;
+  margin: 4px 4px 0;
+}
+
 .video-album-dims {
-  height: 30px;
-  margin: 4px;
-
+  border-top: 0;
+  height: 34px;
+  margin: 0 4px 4px;
 }
 
 .video-card-body {
   margin: 0;
+}
+
+.video-col {
+  flex-grow: 0;
 }
 
 .video-description-dims {
@@ -24,8 +34,11 @@ $card-border-color: #333;
 }
 
 .video-img {
+  height: 110px;
   margin: 5% auto;
-  width: 90%;
+  object-fit: cover;
+  padding: 0 10px;
+  width: 220px;
 }
 
 .video-title {
