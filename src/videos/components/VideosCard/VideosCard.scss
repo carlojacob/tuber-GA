@@ -22,6 +22,11 @@ $card-height: $card-width * (5 / 9);
   flex-grow: 0;
 }
 
+.videos-row {
+  display: flex;
+  justify-content: center;
+}
+
 .video-description-dims {
   height: 80px;
   margin: 4px;
@@ -34,11 +39,11 @@ $card-height: $card-width * (5 / 9);
 }
 
 .video-img {
-  height: 110px;
+  height: 120px;
   margin: 5% auto;
   object-fit: cover;
   padding: 0 10px;
-  width: 220px;
+  width: 240px;
 }
 
 .video-title {
