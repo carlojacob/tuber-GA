@@ -64,4 +64,9 @@ $card-height: $card-width * (5 / 9);
   border: 2px solid $card-border-color;
   box-shadow: 4px 4px 20px $card-border-color;
   margin: 5px auto;
+  transition: transform .2s;
+
+  &:hover {
+    transform: scale(1.03);
+  }
 }

@@ -7,7 +7,7 @@ const tuberSmallLogo = require('./tuberSmallLogo.png')
 
 const authenticatedOptions = (
   <React.Fragment>
-    <Link to="/videos">Videos</Link>
+    <Link to="/videos">Your Tubes</Link>
     <Link to="/change-password">Change Password</Link>
     <Link to="/sign-out">Sign Out</Link>
   </React.Fragment>
@@ -20,21 +20,16 @@ const unauthenticatedOptions = (
   </React.Fragment>
 )
 
-const alwaysOptions = (
-  <React.Fragment>
-    <Link to="/">Home</Link>
-  </React.Fragment>
-)
-
 const Header = ({ user }) => (
   <header className="main-header">
     <div>
-      <img className="header-logo" src={tuberSmallLogo} title="tuberSmallLogo" />
+      <Link to="/">
+        <img className="header-logo" src={tuberSmallLogo} title="tuberSmallLogo" />
+      </Link>
     </div>
     <nav>
-      { user && <span>Welcome, {user.username}</span>}
+      { user && <span className="welcome">Welcome, <em>{user.username}</em>!</span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
-      { alwaysOptions }
     </nav>
   </header>
 )

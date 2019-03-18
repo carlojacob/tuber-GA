@@ -2,7 +2,13 @@ $charcoal: #bbb;
 
 .header-logo {
   height: 80px;
+  transition: transform .2s;
   width: auto;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
 }
 
 .main-header {
@@ -24,6 +30,10 @@ $charcoal: #bbb;
   display: flex;
   flex-grow: 1;
   justify-content: flex-end;
+}
+
+.welcome {
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
