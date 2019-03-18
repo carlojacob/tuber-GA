@@ -32,7 +32,7 @@ const Header = ({ user }) => (
       <img className="header-logo" src={tuberSmallLogo} title="tuberSmallLogo" />
     </div>
     <nav>
-      { user && <span>Welcome, {user.username}</span>}
+      { user && <span className="welcome">Welcome, <em>{user.username}</em></span>}
       { user ? authenticatedOptions : unauthenticatedOptions }
       { alwaysOptions }
     </nav>
